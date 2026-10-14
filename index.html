@@ -1,445 +1,1703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nithin Krishna — Data & BI Analyst</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#111309;
-    --paper:#f4f1e8;
-    --paper-2:#eae6d8;
-    --line:#d5cfbd;
-    --accent:#2c5a37;
-    --accent-lo:#3d7049;
-    --accent-2:#c15f2b;
-    --muted:#5a584c;
-    --mono:"IBM Plex Mono",Menlo,monospace;
-    --sans:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
-    --serif:"Fraunces",Georgia,serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--accent);color:var(--paper)}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 30px}
-  section{padding:104px 0;border-top:1px solid var(--line);position:relative}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:13px}
-  .eyebrow::before{content:"";width:30px;height:1px;background:var(--accent)}
-  h2.section-title{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5vw,54px);line-height:1.02;letter-spacing:-.025em}
-  h2.section-title em{font-style:italic;color:var(--accent)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  /* nav */
-  nav{position:fixed;inset:0 0 auto 0;z-index:50;background:color-mix(in srgb,var(--paper) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
-  nav.scrolled{border-bottom:1px solid var(--line)}
-  .nav-inner{max-width:1120px;margin:0 auto;padding:15px 30px;display:flex;align-items:center;justify-content:space-between}
-  .logo{font-family:var(--mono);font-weight:500;letter-spacing:.12em;font-size:15px}
-  .logo b{color:var(--accent)}
-  .nav-links{display:flex;gap:28px;align-items:center}
-  .nav-links a{font-family:var(--mono);font-size:13px;color:var(--muted);transition:color .2s;position:relative}
-  .nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--accent);transition:width .25s}
-  .nav-links a:not(.nav-cta):hover::after{width:100%}
-  .nav-links a:hover{color:var(--ink)}
-  .nav-cta{font-family:var(--mono);font-size:13px;padding:8px 16px;border:1px solid var(--ink);border-radius:2px;transition:all .2s}
-  .nav-cta:hover{background:var(--ink);color:var(--paper)}
-  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+  <title>Nithin Krishna | Business & Data Analytics</title>
+  <meta name="description" content="Nithin Krishna's analytics portfolio. Explore professional experience, business impact, and projects in reporting, data engineering, and operational decision-making.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://nithink-pixel.github.io/">
 
-  /* hero */
-  .hero{padding:168px 0 96px;border-top:none;position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.28;mask-image:radial-gradient(ellipse 80% 60% at 70% 0%,#000 0%,transparent 72%);pointer-events:none}
-  .hero .wrap{position:relative}
-  .status-pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted);border:1px solid var(--line);padding:7px 15px;border-radius:100px;margin-bottom:38px;background:color-mix(in srgb,var(--paper-2) 70%,transparent)}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
-  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
-  .hero-name{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.4vw,52px);line-height:1;letter-spacing:-.02em;margin-bottom:18px;color:var(--ink)}
-  .hero-name .amp{color:var(--accent-2)}
-  .hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(44px,9vw,104px);line-height:.92;letter-spacing:-.04em;margin-bottom:26px}
-  .hero h1 .l1{display:block}
-  .hero h1 .l2{display:block;color:var(--accent);font-style:italic;font-weight:600}
-  .hero h1 .cursor{color:var(--accent-2);font-weight:400;animation:blink 1.1s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  .hero-sub{font-size:clamp(16px,2.1vw,20px);max-width:620px;color:var(--muted);margin-bottom:16px}
-  .hero-sub strong{color:var(--ink);font-weight:700}
-  .role-tags{font-family:var(--mono);font-size:13px;letter-spacing:.02em;color:var(--accent);margin-bottom:40px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .btn{font-family:var(--mono);font-size:14px;letter-spacing:.02em;padding:14px 24px;border-radius:2px;transition:all .22s;display:inline-flex;align-items:center;gap:8px}
-  .btn-primary{background:var(--accent);color:var(--paper)}
-  .btn-primary:hover{background:var(--ink);transform:translateY(-2px)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nithin Krishna | Business & Data Analytics">
+  <meta property="og:description" content="Business insight. Trusted data. Better operations. Explore my experience and selected analytics projects.">
+  <meta property="og:url" content="https://nithink-pixel.github.io/">
+  <meta name="theme-color" content="#0c151b">
 
-  /* metrics ledger */
-  .ledger{margin-top:76px;border:1px solid var(--ink);border-radius:5px;overflow:hidden;display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper-2);box-shadow:6px 6px 0 var(--ink)}
-  .ledger .cell{padding:30px 24px;border-right:1px solid var(--line);position:relative;transition:background .25s}
-  .ledger .cell:hover{background:color-mix(in srgb,var(--accent) 8%,var(--paper-2))}
-  .ledger .cell:last-child{border-right:none}
-  .ledger .num{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
-  .ledger .num .unit{color:var(--accent-2)}
-  .ledger .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:12px;line-height:1.4}
-  @media(max-width:760px){.ledger{grid-template-columns:repeat(2,1fr);box-shadow:4px 4px 0 var(--ink)}.ledger .cell:nth-child(2){border-right:none}.ledger .cell:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-
-  /* about */
-  .about-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:60px;align-items:start;margin-top:20px}
-  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:38px}}
-  .about-body .lead{font-family:var(--serif);font-size:clamp(24px,3vw,30px);line-height:1.28;color:var(--ink);font-weight:400;margin-bottom:26px;letter-spacing:-.01em}
-  .about-body .lead em{color:var(--accent);font-style:italic}
-  .about-body p{margin-bottom:20px;font-size:16.5px;color:#302f27}
-  .about-body strong{color:var(--ink)}
-  .factcard{border:1px solid var(--line);border-radius:5px;background:var(--paper-2);overflow:hidden}
-  .factcard .row{padding:15px 20px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
-  .factcard .row:last-child{border-bottom:none}
-  .factcard .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-  .factcard .v{font-size:15px;color:var(--ink)}
-  .factcard .v a{color:var(--accent);border-bottom:1px solid transparent;transition:border-color .2s}
-  .factcard .v a:hover{border-color:var(--accent)}
-
-  /* skills */
-  .skill-block{margin-bottom:32px}
-  .skill-head h3{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:14px}
-  .chips{display:flex;flex-wrap:wrap;gap:9px}
-  .chip{font-family:var(--mono);font-size:12.5px;padding:7px 13px;border:1px solid var(--line);border-radius:2px;background:var(--paper-2);transition:all .18s}
-  .chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-  .chip.core{background:var(--accent);color:var(--paper);border-color:var(--accent)}
-  .chip.core:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-
-  /* experience */
-  .exp{display:grid;grid-template-columns:190px 1fr;gap:36px;padding:38px 0;border-bottom:1px solid var(--line)}
-  .exp:last-child{border-bottom:none}
-  @media(max-width:760px){.exp{grid-template-columns:1fr;gap:14px}}
-  .exp-meta .when{font-family:var(--mono);font-size:13px;color:var(--ink)}
-  .exp-meta .where{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:5px}
-  .exp-meta .tag{display:inline-block;margin-top:11px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent-2);border:1px solid color-mix(in srgb,var(--accent-2) 40%,var(--line));padding:3px 9px;border-radius:2px}
-  .exp-body h3{font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:-.01em}
-  .exp-body .role{font-family:var(--mono);font-size:13px;color:var(--accent);margin:5px 0 17px}
-  .exp-body ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-  .exp-body li{position:relative;padding-left:24px;font-size:15.5px;color:#302f27}
-  .exp-body li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700}
-  .exp-body li strong{color:var(--ink)}
-
-  /* projects */
-  .proj{border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:24px;background:var(--paper-2);transition:border-color .3s,transform .3s,box-shadow .3s;will-change:transform}
-  .proj:hover{border-color:var(--ink);transform:translateY(-4px);box-shadow:8px 8px 0 var(--ink)}
-  .proj-top{display:flex;justify-content:space-between;align-items:center;padding:24px 30px 0}
-  .proj-idx{font-family:var(--serif);font-size:34px;font-weight:900;color:var(--line);line-height:1}
-  .proj-live{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:var(--accent);display:flex;align-items:center;gap:7px;text-transform:uppercase}
-  .proj-live .dot{width:6px;height:6px}
-  .proj-body{padding:12px 30px 28px}
-  .proj-body h3{font-family:var(--serif);font-size:clamp(26px,3.2vw,32px);font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
-  .proj-body .tagline{font-family:var(--mono);font-size:13px;color:var(--accent-2);margin-bottom:18px}
-  .proj-body p{font-size:15.5px;color:#302f27;margin-bottom:20px;max-width:76ch}
-  .proj-body p strong{color:var(--ink)}
-  .proj-stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
-  .proj-stack span{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:2px}
-  .proj-links{display:flex;gap:12px;flex-wrap:wrap}
-  .proj-links a{font-family:var(--mono);font-size:13px;padding:10px 17px;border-radius:2px;transition:all .2s}
-  .proj-links a.live{background:var(--accent);color:var(--paper)}
-  .proj-links a.live:hover{background:var(--ink)}
-  .proj-links a.code{border:1px solid var(--line);color:var(--ink)}
-  .proj-links a.code:hover{border-color:var(--ink)}
-  .proj-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:15px}
-
-  /* education */
-  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
-  @media(max-width:760px){.edu-grid{grid-template-columns:1fr}}
-  .edu{border:1px solid var(--line);border-radius:5px;padding:28px;background:var(--paper-2);transition:border-color .25s,transform .25s}
-  .edu:hover{border-color:var(--accent);transform:translateY(-2px)}
-  .edu h3{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:4px}
-  .edu .school{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:4px}
-  .edu .meta{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:16px}
-  .edu .cw{font-size:14px;color:#302f27}
-  .edu .cw b{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
-
-  /* contact */
-  .contact{text-align:center;padding-bottom:130px;position:relative;overflow:hidden}
-  .contact::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.22;mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,#000,transparent 70%);pointer-events:none}
-  .contact .wrap{position:relative}
-  .contact .big{font-family:var(--serif);font-weight:600;font-size:clamp(38px,7vw,76px);line-height:1;letter-spacing:-.03em;margin:16px 0 26px}
-  .contact .big em{font-style:italic;color:var(--accent)}
-  .contact p{max-width:580px;margin:0 auto 36px;color:var(--muted);font-size:16.5px}
-  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
-  footer{border-top:1px solid var(--line);padding:30px 0}
-  .foot-inner{max-width:1120px;margin:0 auto;padding:0 30px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);flex-wrap:wrap;gap:12px}
-  .foot-inner a{color:var(--muted);transition:color .2s}
-  .foot-inner a:hover{color:var(--accent)}
-
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot,.cursor{animation:none}.hero::before,.contact::before{display:none}}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-</style>
-</head>
-<body>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#hero" class="logo">NK<b>.</b></a>
-    <div class="nav-links">
-      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero" id="hero">
-  <div class="wrap">
-    <div class="status-pill reveal"><span class="dot"></span> Open to full-time roles · MSBA @ UMass Amherst</div>
-    <div class="hero-name reveal">Nithin Krishna</div>
-    <h1 class="reveal"><span class="l1">I turn data into</span><span class="l2">decisions<span class="cursor">_</span></span></h1>
-    <p class="hero-sub reveal"><strong>6+ years</strong> turning finance, operations, procurement, and supply-chain data into dashboards, automated reporting, and decision-support systems teams actually rely on.</p>
-    <div class="role-tags reveal">Data Analyst · Business Intelligence · Supply Chain &amp; Operations Analytics</div>
-    <div class="hero-cta reveal">
-      <a href="#projects" class="btn btn-primary">See the work →</a>
-      <a href="https://linkedin.com/in/nithin-krishna145" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
-    </div>
-
-    <div class="ledger reveal">
-      <div class="cell"><div class="num" data-target="40" data-suffix="%"><span class="unit"></span>0</div><div class="lbl">Faster decision cycles</div></div>
-      <div class="cell"><div class="num" data-prefix="$" data-target="90" data-suffix="K">0</div><div class="lbl">Annual savings found</div></div>
-      <div class="cell"><div class="num" data-target="5.58" data-prefix="$" data-suffix="M" data-dec="2">0</div><div class="lbl">Revenue leakage surfaced</div></div>
-      <div class="cell"><div class="num" data-target="3">0</div><div class="lbl">Live analytics platforms</div></div>
-    </div>
-  </div>
-</header>
-
-<section id="about">
-  <div class="wrap">
-    <div class="eyebrow reveal">About</div>
-    <div class="about-grid">
-      <div class="about-body">
-        <p class="lead reveal">Most teams aren't short on data. They're short on <em>clarity</em>. I build the systems that close that gap.</p>
-        <p class="reveal">I take raw operational data and turn it into reporting people trust and act on — defining KPIs with stakeholders, modeling the data underneath, and making sure every number can be traced back to its source.</p>
-        <p class="reveal">As <strong>Data Analytics Lead at Ayra Builders &amp; Developers</strong>, I built forecasting models across <strong>$600K+ operating portfolios</strong> that identified <strong>$90K in annual savings</strong> and cut executive decision time by 40%. As co-founder of <strong>Buildbean</strong>, a B2B analytics startup, I built reporting that cut errors 60% and supported 20%+ margin improvement. I got my start as an analyst at <strong>Lokal (Y Combinator W19)</strong>.</p>
-        <p class="reveal">I'm finishing my <strong>M.S. in Business Analytics</strong> at UMass Amherst (Isenberg). The problems I like most sit where messy real-world data meets decisions that actually matter.</p>
-      </div>
-      <div class="factcard reveal">
-        <div class="row"><span class="k">Status</span><span class="v">Open to full-time · graduating May 2027</span></div>
-        <div class="row"><span class="k">Location</span><span class="v">Amherst, MA · open to relocation</span></div>
-        <div class="row"><span class="k">Degree</span><span class="v">M.S. Business Analytics — UMass Amherst</span></div>
-        <div class="row"><span class="k">Target roles</span><span class="v">Data Analyst · BI Analyst · Supply Chain / Ops Analyst</span></div>
-        <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:nithinkrishna.km@gmail.com">nithinkrishna.km@gmail.com</a></span></div>
-        <div class="row"><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/nithin-krishna145" target="_blank" rel="noopener">nithin-krishna145 ↗</a></span></div>
-        <div class="row"><span class="k">GitHub</span><span class="v"><a href="https://github.com/nithink-pixel" target="_blank" rel="noopener">nithink-pixel ↗</a></span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="eyebrow reveal">Skills</div>
-    <h2 class="section-title reveal">What I <em>bring</em></h2>
-    <p class="reveal" style="color:var(--muted);max-width:620px;margin:16px 0 46px">Core, everyday tools in green. Everything here is something I've used on real work or shipped projects.</p>
-
-    <div class="skill-block reveal">
-      <div class="skill-head"><h3>Business Intelligence &amp; Reporting</h3></div>
-      <div class="chips">
-        <span class="chip core">Power BI</span><span class="chip core">Tableau</span><span class="chip core">Excel</span>
-        <span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Dashboard Development</span>
-        <span class="chip">KPI Reporting</span><span class="chip">Executive Reporting</span><span class="chip">Data Visualization</span>
-        <span class="chip">Self-Service Analytics</span><span class="chip">Data Storytelling</span>
-      </div>
-    </div>
-    <div class="skill-block reveal">
-      <div class="skill-head"><h3>Analytics &amp; Methods</h3></div>
-      <div class="chips">
-        <span class="chip core">SQL</span><span class="chip core">Python</span>
-        <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span>
-        <span class="chip">Statistical Analysis</span><span class="chip">Forecasting</span><span class="chip">A/B Testing</span>
-        <span class="chip">Funnel Analysis</span><span class="chip">Customer Segmentation</span><span class="chip">Root-Cause Analysis</span>
-        <span class="chip">Optimization (OR-Tools)</span>
-      </div>
-    </div>
-    <div class="skill-block reveal">
-      <div class="skill-head"><h3>Data Engineering &amp; Modeling</h3></div>
-      <div class="chips">
-        <span class="chip">Snowflake</span><span class="chip">DuckDB</span><span class="chip">dbt</span><span class="chip">Airflow</span>
-        <span class="chip">ETL / ELT</span><span class="chip">Data Warehousing</span><span class="chip">Dimensional Modeling</span>
-        <span class="chip">Star Schema</span><span class="chip">Data Quality Testing</span><span class="chip">Reconciliation</span>
-        <span class="chip">Data Lineage</span><span class="chip">Git</span>
-      </div>
-    </div>
-    <div class="skill-block reveal">
-      <div class="skill-head"><h3>Operations, Supply Chain &amp; Business</h3></div>
-      <div class="chips">
-        <span class="chip">Demand Planning</span><span class="chip">S&amp;OP Modeling</span><span class="chip">Inventory Analytics</span>
-        <span class="chip">Vendor &amp; Supplier Performance</span><span class="chip">Procurement Analytics</span><span class="chip">Capacity Planning</span>
-        <span class="chip">Requirements Gathering</span><span class="chip">Stakeholder Management</span>
-        <span class="chip">Process Documentation</span><span class="chip">Generative AI &amp; LLM Analytics</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="eyebrow reveal">Experience</div>
-    <h2 class="section-title reveal">Where I've made <em>impact</em></h2>
-    <div style="margin-top:46px">
-
-      <div class="exp reveal">
-        <div class="exp-meta"><div class="when">Aug 2021 — Dec 2025</div><div class="where">Bengaluru, India</div><div class="tag">4+ years</div></div>
-        <div class="exp-body">
-          <h3>Ayra Builders &amp; Developers</h3>
-          <div class="role">Data Analytics Lead</div>
-          <ul>
-            <li>Built forecasting models across <strong>$600K+ operating portfolios</strong> and analyzed procurement, cost, and supplier performance across 10+ vendors — identifying <strong>$90K in annual savings</strong>.</li>
-            <li>Automated SQL and Snowflake pipelines into standardized reporting datasets, cutting <strong>executive decision latency by 40%</strong>.</li>
-            <li>Partnered with finance, operations, and leadership to define KPIs and standardize weekly reporting; validated dashboards with business users through UAT.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp reveal">
-        <div class="exp-meta"><div class="when">Jan 2020 — Jul 2021</div><div class="where">Bengaluru, India</div><div class="tag">Co-founder</div></div>
-        <div class="exp-body">
-          <h3>Buildbean <span style="font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:400">· B2B Analytics Startup</span></h3>
-          <div class="role">Data Analyst &amp; Co-Founder</div>
-          <ul>
-            <li>Built SQL and Excel scorecards across 15 vendors and 45+ client engagements, cutting recurring <strong>reporting errors by 60%</strong>.</li>
-            <li>Analyzed pricing, costs, and unit economics, driving recommendations that contributed to <strong>20%+ margin improvement</strong> within six months.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp reveal">
-        <div class="exp-meta"><div class="when">Sep 2019 — Nov 2019</div><div class="where">Bengaluru, India</div><div class="tag">YC W19</div></div>
-        <div class="exp-body">
-          <h3>Behtar Technology <span style="font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:400">· Lokal App</span></h3>
-          <div class="role">Business &amp; Product Analyst Intern</div>
-          <ul>
-            <li>Analyzed <strong>100K+ daily records</strong> with SQL and Python, cutting reporting turnaround time by <strong>75%</strong>.</li>
-            <li>Mapped user-funnel drop-offs across 100K+ users and delivered recommendations that informed product prioritization.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <div class="eyebrow reveal">Projects</div>
-    <h2 class="section-title reveal">Built &amp; <em>shipped</em></h2>
-    <p class="reveal" style="color:var(--muted);max-width:640px;margin:16px 0 46px">Three live analytics platforms. Each starts from a real business problem and ends in a decision. Live links and code below.</p>
-
-    <div class="proj reveal">
-      <div class="proj-top"><div class="proj-idx">01</div><div class="proj-live"><span class="dot"></span> Live</div></div>
-      <div class="proj-body">
-        <h3>RevRisk v2.0</h3>
-        <div class="tagline">Revenue &amp; Risk Intelligence Platform</div>
-        <p>A self-service platform that estimated <strong>$5.58M in potential revenue leakage across 4,121 flagged transactions</strong> — pinpointing excessive discounting as the largest driver. Built on a dbt + DuckDB warehouse with star-schema marts, Airflow orchestration, <strong>39 automated data-quality tests</strong>, and exact-dollar reconciliation, so every number on the dashboard traces back to a tested source.</p>
-        <div class="proj-stack"><span>Python</span><span>SQL</span><span>dbt</span><span>Airflow</span><span>DuckDB</span><span>Streamlit</span></div>
-        <div class="proj-links">
-          <a href="https://revriskv2-nithinpixel.streamlit.app" target="_blank" rel="noopener" class="live">Live app ↗</a>
-          <a href="https://github.com/nithink-pixel/revrisk_v2" target="_blank" rel="noopener" class="code">Code →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="proj-top"><div class="proj-idx">02</div><div class="proj-live"><span class="dot"></span> Live</div></div>
-      <div class="proj-body">
-        <h3>PlanSync</h3>
-        <div class="tagline">Integrated Business Planning &amp; Supply Chain Intelligence</div>
-        <p>An end-to-end S&amp;OP decision-support platform on a <strong>simulated 120-SKU supply chain</strong> (12 regions, 8 suppliers, 2 plants, 3 distribution centers, ~400K synthetic records). Pairs multi-model P10/P50/P90 demand forecasts with an <strong>OR-Tools optimization model</strong> — recommending overtime, expediting, and inventory transfers under capacity constraints, and improving modeled fill rate from <strong>69.7% to over 99%</strong>.</p>
-        <div class="proj-stack"><span>Python</span><span>SQL</span><span>DuckDB</span><span>OR-Tools</span><span>Streamlit</span></div>
-        <div class="proj-links">
-          <a href="https://plansync-nithin.streamlit.app" target="_blank" rel="noopener" class="live">Live app ↗</a>
-        </div>
-        <div class="proj-note">* Synthetic data — company and dataset are simulated, documented as such in the repo.</div>
-      </div>
-    </div>
-
-    <div class="proj reveal">
-      <div class="proj-top"><div class="proj-idx">03</div><div class="proj-live"><span class="dot"></span> Live</div></div>
-      <div class="proj-body">
-        <h3>AdsPulse</h3>
-        <div class="tagline">Marketing Decision Intelligence Platform</div>
-        <p>A marketing analytics platform on <strong>171K+ campaign records</strong> with real statistical rigor — 14 A/B experiments using two-proportion z-tests, Wilson intervals, and power analysis. Compares 5 attribution models alongside funnel, segmentation, and cohort analysis, producing executive summaries and <strong>channel-level budget-allocation recommendations</strong> across 25+ governed KPIs.</p>
-        <div class="proj-stack"><span>Python</span><span>SQL</span><span>DuckDB</span><span>SciPy</span><span>Streamlit</span></div>
-        <div class="proj-links">
-          <a href="https://adspulse-nithinpixel.streamlit.app" target="_blank" rel="noopener" class="live">Live app ↗</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <div class="eyebrow reveal">Education</div>
-    <h2 class="section-title reveal">Academic <em>background</em></h2>
-    <div class="edu-grid">
-      <div class="edu reveal">
-        <h3>M.S. Business Analytics</h3>
-        <div class="school">UMass Amherst · Isenberg School of Management</div>
-        <div class="meta">Jan 2026 — May 2027 · GPA 3.78/4.00 · Amherst, MA</div>
-        <div class="cw"><b>Coursework</b>Business Intelligence, Data Management, Statistics &amp; Forecasting, Data Modeling, Generative AI</div>
-      </div>
-      <div class="edu reveal">
-        <h3>B.E. Computer Science</h3>
-        <div class="school">Bangalore Institute of Technology · VTU</div>
-        <div class="meta">Aug 2015 — Jul 2019 · Bengaluru, India</div>
-        <div class="cw"><b>Foundation</b>Data Structures, Algorithms, Database Management, Object-Oriented Programming, Software Engineering</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="eyebrow reveal" style="justify-content:center">Contact</div>
-    <h2 class="big reveal">Let's build something <em>data-driven</em>.</h2>
-    <p class="reveal">Open to full-time roles in Data Analytics, Business Intelligence, and Supply Chain / Operations Analytics. If you're building something and want someone who ships real, trustworthy work — let's talk.</p>
-    <div class="contact-links reveal">
-      <a href="mailto:nithinkrishna.km@gmail.com" class="btn btn-primary">✉ Email me</a>
-      <a href="https://linkedin.com/in/nithin-krishna145" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
-      <a href="https://github.com/nithink-pixel" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="foot-inner">
-    <span>© 2026 Nithin Krishna · Amherst, MA</span>
-    <span>(413) 210-0697 · <a href="mailto:nithinkrishna.km@gmail.com">nithinkrishna.km@gmail.com</a></span>
-  </div>
-</footer>
-
-<script>
-  const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
-
-  const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
-  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%6,5)*70)+'ms';io.observe(el)});
-
-  // count-up metrics
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function countUp(el){
-    const target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.dec||'0'),
-      pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';
-    if(reduce){el.innerHTML=pre+target.toFixed(dec)+'<span class="unit">'+suf+'</span>';return;}
-    const dur=1400,t0=performance.now();
-    function tick(now){
-      const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3),val=(target*e).toFixed(dec);
-      el.innerHTML=(pre?'<span class="unit">'+pre+'</span>':'')+val+(suf?'<span class="unit">'+suf+'</span>':'');
-      if(p<1)requestAnimationFrame(tick);
+  <style>
+    :root {
+      --bg: #0c151b;
+      --panel: #111e25;
+      --panel-alt: #172830;
+      --text: #eef4f2;
+      --muted: #aebdc1;
+      --accent: #a5e8cd;
+      --line: #32454e;
+      --max: 1180px;
+      color-scheme: dark;
     }
-    requestAnimationFrame(tick);
-  }
-  const mio=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){countUp(e.target);mio.unobserve(e.target)}});
-  },{threshold:.6});
-  document.querySelectorAll('.ledger .num').forEach(el=>mio.observe(el));
-</script>
+
+    html[data-theme="light"] {
+      --bg: #f5f7f4;
+      --panel: #ffffff;
+      --panel-alt: #eaf0eb;
+      --text: #13242b;
+      --muted: #485f65;
+      --accent: #19624b;
+      --line: #bacbc3;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover { color: var(--accent); }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip {
+      position: fixed;
+      top: -100px;
+      left: 20px;
+      z-index: 100;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 12px 18px;
+    }
+
+    .skip:focus { top: 12px; }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      margin-right: auto;
+      font-size: 32px;
+      font-weight: 750;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      font-size: 13px;
+      font-weight: 550;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    .nav-links a:last-child { color: var(--accent); }
+
+    .theme-toggle,
+    .menu-toggle {
+      min-height: 44px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--text);
+      background: transparent;
+      font-size: 12px;
+    }
+
+    .menu-toggle { display: none; }
+
+    .eyebrow {
+      display: block;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 650;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .hero { padding: 62px 0 72px; }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .location {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 26px;
+      font-size: clamp(46px, 5.5vw, 74px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -3px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .intro {
+      max-width: 630px;
+      font-size: 20px;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .hero-detail {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      min-height: 50px;
+      padding: 12px 21px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .primary {
+      border-color: var(--accent);
+      color: var(--bg);
+      background: var(--accent);
+    }
+
+    .primary:hover {
+      border-color: var(--text);
+      color: var(--bg);
+      background: var(--text);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    .social { color: var(--muted); }
+
+    .hero-aside {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      background: var(--panel);
+    }
+
+    .experience-snapshot {
+      display: flex;
+      gap: 17px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-snapshot > span {
+      padding-top: 3px;
+      color: var(--accent);
+      font-family: ui-monospace, monospace;
+      font-size: 12px;
+    }
+
+    .experience-snapshot h2 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.2px;
+    }
+
+    .experience-snapshot p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .aside-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 15px;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    .impact {
+      padding: 25px 0 32px;
+      border-block: 1px solid var(--line);
+    }
+
+    .impact-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 23px;
+    }
+
+    .impact-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .impact-grid article {
+      padding: 5px 25px;
+      border-right: 1px solid var(--line);
+    }
+
+    .impact-grid article:first-child { padding-left: 0; }
+    .impact-grid article:last-child { border: 0; }
+
+    .impact-grid strong {
+      display: block;
+      font-size: 45px;
+      font-weight: 550;
+      line-height: 1.3;
+      letter-spacing: -2px;
+    }
+
+    .impact-grid h3 {
+      max-width: 200px;
+      margin: 10px 0 8px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .impact-grid p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .section { padding-block: 90px; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 45px;
+      margin-bottom: 36px;
+    }
+
+    .section-heading h2,
+    .about-grid h2,
+    .resume-panel h2,
+    .contact h2 {
+      margin: 14px 0 0;
+      font-size: clamp(30px, 3.4vw, 45px);
+      font-weight: 550;
+      line-height: 1.2;
+      letter-spacing: -1.6px;
+    }
+
+    .section-heading > p {
+      max-width: 350px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .project {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+
+    .project-visual {
+      min-height: 250px;
+      padding: 28px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel-alt);
+    }
+
+    .project-image {
+      display: block;
+      overflow: hidden;
+      background: #111d23;
+    }
+
+    .project-image img {
+      width: 100%;
+      aspect-ratio: 1.78;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .visual-title {
+      margin-bottom: 24px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .pipeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .pipeline div {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 15px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .pipeline span {
+      color: var(--accent);
+      font-size: 11px;
+      font-family: ui-monospace, monospace;
+    }
+
+    .comparison {
+      display: grid;
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    .comparison-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .bar-track {
+      height: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--bg);
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: 20px;
+      background: var(--accent);
+    }
+
+    .bar-before { width: 69.8%; opacity: 0.65; }
+    .bar-after { width: 99.95%; }
+
+    .visual-note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .model-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0;
+    }
+
+    .model-list span {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .project-copy { padding: 27px; }
+
+    .project-copy .eyebrow {
+      font-size: 10px;
+      letter-spacing: 1.2px;
+    }
+
+    .project h3 {
+      margin: 14px 0;
+      font-size: 27px;
+      letter-spacing: -0.7px;
+      line-height: 1.25;
+    }
+
+    .project-copy > p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .project-result {
+      margin: 20px 0 8px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .project-copy .provenance {
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .stack {
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      font-size: 11px !important;
+      color: var(--muted);
+    }
+
+    .project details {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .project summary {
+      cursor: pointer;
+      padding-block: 10px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .project details h4 {
+      margin: 20px 0 6px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .project details p {
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .project .links { margin-top: 12px; }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .expertise {
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .expertise h3 {
+      margin: 19px 0;
+      font-size: 23px;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+    }
+
+    .expertise p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 50px;
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .experience-meta p {
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .experience-meta span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .experience h3 {
+      margin-bottom: 6px;
+      font-size: 25px;
+      line-height: 1.3;
+      letter-spacing: -0.6px;
+    }
+
+    .role {
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .experience ul {
+      margin: 18px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .experience li {
+      padding-left: 4px;
+      margin-bottom: 11px;
+    }
+
+    .experience li::marker { color: var(--accent); }
+
+    #about { border-top: 1px solid var(--line); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 75px;
+    }
+
+    .about-grid h2 { margin-bottom: 25px; }
+
+    .about-grid p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-grid .intro {
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    .education {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+
+    .education article {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .education article:last-child {
+      border: 0;
+      padding-bottom: 0;
+    }
+
+    .education h3 {
+      margin-bottom: 6px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .education p {
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .education .role { color: var(--accent); }
+
+    .education article span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .resume-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 45px;
+      padding: 38px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+
+    .resume-panel h2 {
+      margin-bottom: 18px;
+      font-size: clamp(28px, 3vw, 40px);
+    }
+
+    .resume-panel p {
+      max-width: 620px;
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .resume-action { text-align: center; }
+
+    .resume-action p {
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    .resume-action .button { white-space: nowrap; }
+
+    .contact {
+      border-block: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .contact h2 {
+      margin-bottom: 24px;
+      font-size: clamp(36px, 4.6vw, 63px);
+    }
+
+    .contact p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .email {
+      display: inline-block;
+      padding-block: 15px;
+      color: var(--accent);
+      font-size: clamp(16px, 2.4vw, 27px);
+      overflow-wrap: anywhere;
+    }
+
+    .contact .links { margin-top: 14px; }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      padding-block: 28px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer p { margin: 0 auto 0 0; }
+
+    .footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    @media (max-width: 1050px) {
+      .nav { gap: 16px; }
+      .nav-links { gap: 16px; }
+      .hero-grid { gap: 35px; }
+      h1 { font-size: 57px; }
+      .hero-aside { padding: 22px; }
+      .impact-grid article { padding-inline: 17px; }
+      .about-grid { gap: 35px; }
+    }
+
+    @media (max-width: 800px) {
+      .wrap { width: calc(100% - 44px); }
+
+      .nav {
+        flex-wrap: wrap;
+        min-height: 72px;
+        padding-block: 14px;
+        gap: 12px;
+      }
+
+      .nav-links {
+        order: 4;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 4px 24px;
+      }
+
+      .js .menu-toggle { display: block; }
+      .js .nav-links:not(.is-open) { display: none; }
+
+      .hero { padding-top: 36px; }
+
+      .hero-top {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 35px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      h1 { font-size: clamp(48px, 8vw, 70px); }
+      .hero-aside { max-width: 620px; }
+
+      .impact-heading {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px 0;
+      }
+
+      .impact-grid article:nth-child(2) { border: 0; }
+      .impact-grid article:nth-child(3) { padding-left: 0; }
+
+      .section { padding-block: 65px; }
+
+      .section-heading { display: block; }
+
+      .section-heading > p {
+        max-width: 600px;
+        margin-top: 20px;
+      }
+
+      .project-grid { gap: 18px; }
+      .project-copy { padding: 22px; }
+      .project h3 { font-size: 23px; }
+
+      .expertise-grid { grid-template-columns: 1fr; }
+
+      .experience {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .about-grid { grid-template-columns: 1fr; }
+
+      .resume-panel {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px;
+      }
+
+      .resume-action { text-align: left; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: calc(100% - 36px); }
+
+      h1 {
+        font-size: 47px;
+        letter-spacing: -2px;
+      }
+
+      .hero { padding-bottom: 45px; }
+      .intro { font-size: 18px; }
+      .hero-detail { font-size: 14px; }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .impact-grid strong { font-size: 39px; }
+      .impact-grid h3 { font-size: 12px; }
+      .impact-grid article { padding-right: 12px; }
+      .impact-grid article:nth-child(2n) { padding-left: 19px; }
+
+      .project-grid { grid-template-columns: 1fr; }
+      .project h3 { font-size: 25px; }
+      .project-visual { min-height: 230px; }
+
+      .section-heading h2 { font-size: 33px; }
+      .experience h3 { font-size: 23px; }
+
+      .resume-panel { padding: 24px; }
+      .resume-panel h2 { font-size: 29px; }
+      .resume-action .button { width: 100%; }
+
+      .contact h2 { font-size: 37px; }
+
+      .footer { gap: 16px; }
+      .footer p { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="#main" aria-label="Nithin Krishna home">
+        nk<span>.</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >Menu</button>
+
+      <nav id="navigation" class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch to light mode"
+        hidden
+      >Light mode</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-top">
+        <span class="eyebrow">Nithin Krishna / Business &amp; data analytics</span>
+        <span class="location">Amherst, MA · Open to relocation</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1 id="hero-title">
+            Business insight.<br>
+            Trusted data.<br>
+            <em>Better operations.</em>
+          </h1>
+
+          <p class="intro">
+            I build reliable data systems, explain business performance,
+            and turn analysis into practical improvements.
+          </p>
+
+          <p class="hero-detail">
+            6+ years of experience connecting data with business decisions,
+            including co-founding a B2B marketplace. M.S. Business Analytics
+            at UMass Amherst, expected May 2027.
+          </p>
+
+          <div class="actions">
+            <a class="button primary" href="#projects">
+              Explore selected work <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button" href="#resume">View resume</a>
+          </div>
+
+          <div class="links social">
+            <a href="https://github.com/nithink-pixel">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/nithin-krishna145/">LinkedIn ↗</a>
+            <a href="mailto:nithinkrishna.km@gmail.com">Contact ↗</a>
+          </div>
+        </div>
+
+        <aside class="hero-aside" aria-label="Professional experience at a glance">
+          <span class="eyebrow">Experience at a glance</span>
+
+          <div class="experience-snapshot">
+            <span>01</span>
+            <div>
+              <h2>Ayra Builders and Developers</h2>
+              <p>
+                Data Analytics Lead · 2021-2025<br>
+                Reporting, data integration, and procurement analysis.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-snapshot">
+            <span>02</span>
+            <div>
+              <h2>Buildbean</h2>
+              <p>
+                Data Analyst &amp; Co-Founder · 2020-2021<br>
+                Marketplace operations and fulfillment improvement.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-snapshot">
+            <span>03</span>
+            <div>
+              <h2>Lokal · YC W19</h2>
+              <p>
+                Business &amp; Product Analyst Intern · 2019<br>
+                Reporting automation and conversion analysis.
+              </p>
+            </div>
+          </div>
+
+          <a class="aside-link" href="#experience">
+            See experience and business impact →
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="impact wrap" aria-label="Professional business impact">
+      <div class="impact-heading">
+        <span class="eyebrow">Professional impact</span>
+        <p>Selected outcomes from my professional work.</p>
+      </div>
+
+      <div class="impact-grid">
+        <article>
+          <strong>40%</strong>
+          <h3>Faster executive decisions</h3>
+          <p>Ayra · integrated KPI reporting</p>
+        </article>
+
+        <article>
+          <strong>$90K</strong>
+          <h3>Annual savings opportunities identified</h3>
+          <p>Ayra · cost and supplier analysis</p>
+        </article>
+
+        <article>
+          <strong>65%</strong>
+          <h3>Less order-to-delivery time</h3>
+          <p>Buildbean · dispatch redesign</p>
+        </article>
+
+        <article>
+          <strong>~8 hrs</strong>
+          <h3>Manual reporting eliminated weekly</h3>
+          <p>Ayra · dashboard automation</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section wrap" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Selected work / 01</span>
+          <h2 id="projects-title">Business questions.<br>Working systems.</h2>
+        </div>
+        <p>
+          Projects connecting dependable data, sound analysis, and useful
+          decisions. Simulated outcomes are labeled explicitly.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project" id="project-revrisk">
+          <a
+            class="project-image"
+            href="https://github.com/nithink-pixel/revrisk_v2"
+            aria-label="Explore RevRisk source code"
+          >
+            <img
+              src="https://raw.githubusercontent.com/nithink-pixel/revrisk_v2/main/assets/01-executive-overview.png"
+              alt="RevRisk executive dashboard from the project repository, displaying synthetic revenue metrics"
+              width="2048"
+              height="1166"
+              loading="lazy"
+              decoding="async"
+            >
+          </a>
+
+          <div class="project-copy">
+            <span class="eyebrow">01 / Reliable reporting foundations</span>
+            <h3>RevRisk v2.0</h3>
+            <p>
+              A layered dbt warehouse connecting incremental facts,
+              contract history, governed reporting marts, and
+              exact-dollar revenue reconciliation.
+            </p>
+
+            <div class="project-result">39 declared data-quality tests</div>
+            <p class="provenance">Synthetic data · Portfolio environment</p>
+            <p class="stack">dbt · DuckDB · Python · GitHub Actions</p>
+
+            <details>
+              <summary>Problem, approach &amp; limitations</summary>
+
+              <h4>The business question</h4>
+              <p>
+                Can a revenue dashboard prove that its numbers agree with
+                source transactions and preserve changes in contract history?
+              </p>
+
+              <h4>My contribution</h4>
+              <p>
+                Built the transformation foundation, dimensional models,
+                revenue controls, analytical marts, and dashboard.
+                The repository includes incremental transaction processing,
+                SCD Type 2 contract snapshots, CI, and an Airflow DAG.
+              </p>
+
+              <h4>An important engineering decision</h4>
+              <p>
+                A three-day lookback and transaction-ID merge accommodate
+                late-arriving records without duplicating transactions.
+                Older changes require a separate refresh strategy.
+              </p>
+
+              <h4>Evaluation and limitations</h4>
+              <p>
+                The source declares 38 generic tests and one singular
+                reconciliation test. This is a count of implemented
+                controls, not a claim that a current run has passed.
+                The data is synthetic; modeled exposure does not represent
+                recovered revenue.
+              </p>
+            </details>
+
+            <div class="links">
+              <a href="https://github.com/nithink-pixel/revrisk_v2">
+                Explore project ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" id="project-plansync">
+          <div class="project-visual">
+            <p class="visual-title">PlanSync / Simulated planning result</p>
+
+            <div class="comparison" aria-label="Demand-weighted simulated fill rate: 69.8 percent before and 99.95 percent after optimization">
+              <div>
+                <div class="comparison-label">
+                  <span>Before optimization</span>
+                  <strong>69.8%</strong>
+                </div>
+                <div class="bar-track" aria-hidden="true">
+                  <div class="bar bar-before"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="comparison-label">
+                  <span>After optimization</span>
+                  <strong>99.95%</strong>
+                </div>
+                <div class="bar-track" aria-hidden="true">
+                  <div class="bar bar-after"></div>
+                </div>
+              </div>
+            </div>
+
+            <p class="visual-note">
+              Demand-weighted result from the committed optimization output.
+              Synthetic company and simulated outcomes.
+            </p>
+          </div>
+
+          <div class="project-copy">
+            <span class="eyebrow">02 / Planning &amp; operational decisions</span>
+            <h3>PlanSync</h3>
+            <p>
+              A reproducible planning pipeline connecting demand forecasts,
+              supply feasibility, capacity actions, and an approval queue.
+            </p>
+
+            <div class="project-result">Forecast uncertainty to feasible actions</div>
+            <p class="provenance">Simulated company · Simulated outcomes</p>
+            <p class="stack">Python · DuckDB · OR-Tools · Streamlit</p>
+
+            <details>
+              <summary>Problem, approach &amp; limitations</summary>
+
+              <h4>The business question</h4>
+              <p>
+                Which capacity and fulfillment actions should a planning
+                team prioritize when demand exceeds available supply?
+              </p>
+
+              <h4>My contribution</h4>
+              <p>
+                Designed a seeded company spanning 120 SKUs, 12 regions,
+                eight suppliers, two plants, and three distribution centers.
+                Built forecasting, consensus, supply feasibility,
+                optimization, scenario comparison, and decision outputs.
+              </p>
+
+              <h4>An important analytical decision</h4>
+              <p>
+                P10/P50/P90 forecasts communicate demand uncertainty.
+                OR-Tools compares overtime, expediting, and transfers
+                under modeled capacity constraints.
+              </p>
+
+              <h4>Evaluation and limitations</h4>
+              <p>
+                The committed output contains 373 rows. Demand-weighted
+                fill rate is 69.779% before actions and 99.952% after.
+                These are simulated outcomes. Some capacity limits use
+                simplified heuristics, and root-cause attribution is
+                rule-based rather than a formal causal decomposition.
+              </p>
+            </details>
+
+            <div class="links">
+              <a href="https://github.com/nithink-pixel/plansync">
+                Explore project ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" id="project-adspulse">
+          <div class="project-visual">
+            <p class="visual-title">AdsPulse / Attribution comparison</p>
+
+            <div class="model-list" aria-label="Five attribution methods">
+              <span>First-touch</span>
+              <span>Last-touch</span>
+              <span>Linear</span>
+              <span>Time-decay</span>
+              <span>Position-based</span>
+            </div>
+
+            <p class="visual-note">
+              Different attribution assumptions change how conversion
+              credit is assigned. Attributed revenue is not causal lift.
+            </p>
+          </div>
+
+          <div class="project-copy">
+            <span class="eyebrow">03 / Commercial decision support</span>
+            <h3>AdsPulse</h3>
+            <p>
+              A marketing analytics platform combining experiment
+              readouts, attribution, customer cohorts, and governed KPIs.
+            </p>
+
+            <div class="project-result">5 attribution models compared</div>
+            <p class="provenance">Synthetic campaigns · Simulated experiments</p>
+            <p class="stack">Python · DuckDB · SciPy · Streamlit</p>
+
+            <details>
+              <summary>Problem, approach &amp; limitations</summary>
+
+              <h4>The business question</h4>
+              <p>
+                How should a marketing team evaluate experiments,
+                compare attribution assumptions, and decide which
+                metrics to trust?
+              </p>
+
+              <h4>My contribution</h4>
+              <p>
+                Implemented campaign reporting, experiment analysis,
+                attribution, cohort analytics, KPI governance, and
+                a Streamlit interface. Synthetic inputs include known
+                treatment effects and injected data-quality issues.
+              </p>
+
+              <h4>An important analytical decision</h4>
+              <p>
+                Compare attribution models separately from incrementality.
+                Conversion credit explains an allocation rule; causal
+                lift requires additional experimental assumptions.
+              </p>
+
+              <h4>Evaluation and limitations</h4>
+              <p>
+                Methods include two-proportion z-tests, confidence
+                intervals, power analysis, and cohort analysis.
+                Synthetic ground truth supports methodological checks.
+                No realized advertising uplift or budget savings
+                are claimed.
+              </p>
+            </details>
+
+            <div class="links">
+              <a href="https://github.com/nithink-pixel/adspulse">
+                Explore project ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" id="project-olist">
+          <div class="project-visual">
+            <p class="visual-title">E-commerce analysis / Workflow</p>
+
+            <div class="pipeline" aria-label="Analytical workflow">
+              <div><span>01</span> Olist-schema fallback data</div>
+              <div><span>02</span> Python and SQL analysis</div>
+              <div><span>03</span> Revenue and delivery insights</div>
+            </div>
+          </div>
+
+          <div class="project-copy">
+            <span class="eyebrow">04 / E-commerce performance</span>
+            <h3>Olist E-Commerce Analytics</h3>
+            <p>
+              A Python and SQL analysis connecting order revenue,
+              delivery performance, customer reviews, and customer segments.
+            </p>
+
+            <div class="project-result">Orders, delivery &amp; customer analysis</div>
+            <p class="provenance">Synthetic fallback · Olist-schema analysis</p>
+            <p class="stack">Python · SQL · Pandas · Statistical analysis</p>
+
+            <details>
+              <summary>Problem, approach &amp; limitations</summary>
+
+              <h4>The business question</h4>
+              <p>
+                How can an e-commerce team examine revenue, delivery
+                performance, and customer behavior together?
+              </p>
+
+              <h4>My contribution</h4>
+              <p>
+                Built a notebook workflow combining relational tables,
+                revenue and delivery indicators, customer reviews,
+                and RFM segmentation.
+              </p>
+
+              <h4>Dataset provenance</h4>
+              <p>
+                The notebook attempts to load the Olist public dataset
+                and includes a seeded synthetic fallback. The committed
+                export contains 93,014 unique order IDs using the
+                generated format from that fallback.
+              </p>
+
+              <h4>Evaluation and limitations</h4>
+              <p>
+                This case study covers the notebook version and treats
+                its committed outputs as synthetic. The results
+                demonstrate analytical methods, not observed
+                marketplace performance or causal business effects.
+              </p>
+            </details>
+
+            <div class="links">
+              <a href="https://github.com/nithink-pixel/ecommerce-sales-analytics">
+                Explore project ↗
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="expertise" class="section wrap" aria-labelledby="expertise-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Expertise / 02</span>
+          <h2 id="expertise-title">From business question<br>to practical decision.</h2>
+        </div>
+      </div>
+
+      <div class="expertise-grid">
+        <article class="expertise">
+          <span class="eyebrow">Understand</span>
+          <h3>Make performance clear</h3>
+          <p>
+            Define consistent KPIs, automate reporting, and connect
+            commercial and operating questions to decision-ready analysis.
+          </p>
+          <p class="stack">
+            SQL · Power BI · Tableau · Excel · Experimentation
+          </p>
+        </article>
+
+        <article class="expertise">
+          <span class="eyebrow">Build</span>
+          <h3>Build trust in the data</h3>
+          <p>
+            Create reusable models, trace lineage, preserve history,
+            validate assumptions, and reconcile reporting to source data.
+          </p>
+          <p class="stack">
+            dbt · Snowflake · Redshift · Python · CI
+          </p>
+        </article>
+
+        <article class="expertise">
+          <span class="eyebrow">Improve</span>
+          <h3>Improve operating decisions</h3>
+          <p>
+            Evaluate suppliers, diagnose fulfillment bottlenecks,
+            forecast demand, and compare realistic capacity actions.
+          </p>
+          <p class="stack">
+            Forecasting · Procurement · OR-Tools · Scenario analysis
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience" class="section wrap" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Experience / 03</span>
+          <h2 id="experience-title">Built through ownership.</h2>
+        </div>
+        <p>
+          From co-founding a marketplace to improving decision support
+          for operations and finance teams.
+        </p>
+      </div>
+
+      <article class="experience">
+        <div class="experience-meta">
+          <p>Aug 2021 - Dec 2025</p>
+          <span>Bengaluru, India</span>
+        </div>
+
+        <div>
+          <h3>Ayra Builders and Developers</h3>
+          <p class="role">Data Analytics Lead</p>
+          <ul>
+            <li>
+              Integrated finance, procurement, and operations data using
+              SQL and Snowflake, reducing executive decision latency by 40%.
+            </li>
+            <li>
+              Automated Power BI and Tableau reporting, eliminating
+              approximately eight hours of manual work each week.
+            </li>
+            <li>
+              Analyzed $600K+ operating portfolios and 10+ vendors to
+              identify $90K in potential annual cost savings.
+            </li>
+            <li>
+              Standardized KPI definitions and data validation across
+              5+ pipelines.
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience">
+        <div class="experience-meta">
+          <p>Jan 2020 - Jul 2021</p>
+          <span>Bengaluru, India</span>
+        </div>
+
+        <div>
+          <h3>Buildbean</h3>
+          <p class="role">Data Analyst &amp; Co-Founder</p>
+          <ul>
+            <li>
+              Co-founded and operated a B2B marketplace, owning order,
+              fulfillment, and vendor-performance analytics.
+            </li>
+            <li>
+              Redesigned dispatch workflows to cut order-to-delivery
+              time by approximately 65%, from 6-7 hours to 2-2.5 hours.
+            </li>
+            <li>
+              Built SQL and Excel reporting on delivery exceptions and
+              vendor SLAs for weekly operating reviews.
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience">
+        <div class="experience-meta">
+          <p>Sep 2019 - Nov 2019</p>
+          <span>Bengaluru, India</span>
+        </div>
+
+        <div>
+          <h3>Behtar Technology · Lokal, YC W19</h3>
+          <p class="role">Business &amp; Product Analyst Intern</p>
+          <ul>
+            <li>
+              Analyzed 100K+ daily records using SQL and Python,
+              cutting reporting turnaround by 75%.
+            </li>
+            <li>
+              Investigated conversion funnels and user drop-off
+              to inform product and engineering priorities.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="about" class="section wrap" aria-labelledby="about-title">
+      <div class="about-grid">
+        <div>
+          <span class="eyebrow">About / 04</span>
+          <h2 id="about-title">Business context.<br>Technical follow-through.</h2>
+
+          <p class="intro">
+            My work starts with a practical question:
+            what decision does this data need to support?
+          </p>
+
+          <p>
+            I have worked across business intelligence, procurement,
+            marketplace fulfillment, and product analytics. Co-founding
+            Buildbean brought that work close to the operating reality:
+            delivery times, vendor reliability, and the trade-offs
+            behind each decision.
+          </p>
+
+          <p>
+            I bring that perspective to data systems and analytical
+            tools, connecting the business problem to the model,
+            the reporting layer, and the next action.
+          </p>
+        </div>
+
+        <div class="education">
+          <span class="eyebrow">Education</span>
+
+          <article>
+            <h3>University of Massachusetts Amherst</h3>
+            <p>Isenberg School of Management</p>
+            <p class="role">M.S. Business Analytics</p>
+            <span>Expected May 2027 · Amherst, MA</span>
+          </article>
+
+          <article>
+            <h3>Bangalore Institute of Technology</h3>
+            <p>Visvesvaraya Technological University</p>
+            <p class="role">B.E. Computer Science</p>
+            <span>Aug 2015 - Jul 2019 · Bengaluru, India</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ONE RESUME SECTION -->
+    <section id="resume" class="section wrap" aria-labelledby="resume-title">
+      <div class="resume-panel">
+        <div>
+          <span class="eyebrow">Resume / 05</span>
+          <h2 id="resume-title">My experience, at a glance.</h2>
+          <p>
+            A concise overview of my professional experience,
+            technical skills, education, and selected projects.
+          </p>
+        </div>
+
+        <div class="resume-action">
+          <!--
+            After uploading your final PDF to the repository as
+            resume-nithin-krishna.pdf, replace the anchor below with:
+
+            <a class="button primary"
+               href="./resume-nithin-krishna.pdf"
+               download>
+              Download Resume ↓
+            </a>
+
+            Then remove the "Available by email" paragraph.
+          -->
+          <a
+            class="button primary"
+            href="mailto:nithinkrishna.km@gmail.com?subject=Nithin%20Krishna%20-%20Resume%20request"
+          >
+            Request my resume <span aria-hidden="true">↗</span>
+          </a>
+          <p>Available by email.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <span class="eyebrow">Contact / 06</span>
+        <h2 id="contact-title">Let’s talk about<br>your next data challenge.</h2>
+        <p>
+          Let’s discuss how I can help your team turn data
+          into clearer decisions.
+        </p>
+
+        <a class="email" href="mailto:nithinkrishna.km@gmail.com">
+          nithinkrishna.km@gmail.com ↗
+        </a>
+
+        <div class="links">
+          <a href="https://www.linkedin.com/in/nithin-krishna145/">LinkedIn ↗</a>
+          <a href="https://github.com/nithink-pixel">GitHub ↗</a>
+          <a href="tel:+14132100697">(413) 210-0697</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <p>© 2026 Nithin Krishna</p>
+    <a href="https://github.com/nithink-pixel">GitHub ↗</a>
+    <a href="#main">Back to top ↑</a>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const root = document.documentElement;
+      const themeButton = document.querySelector(".theme-toggle");
+      const menuButton = document.querySelector(".menu-toggle");
+      const navigation = document.querySelector("#navigation");
+
+      root.classList.add("js");
+
+      function setTheme(value) {
+        root.dataset.theme = value;
+        const nextTheme = value === "light" ? "dark" : "light";
+
+        themeButton.textContent =
+          nextTheme === "light" ? "Light mode" : "Dark mode";
+
+        themeButton.setAttribute(
+          "aria-label",
+          "Switch to " + nextTheme + " mode"
+        );
+
+        document.querySelector('meta[name="theme-color"]').content =
+          value === "light" ? "#f5f7f4" : "#0c151b";
+      }
+
+      let savedTheme = "dark";
+
+      try {
+        if (localStorage.getItem("portfolio-theme") === "light") {
+          savedTheme = "light";
+        }
+      } catch (_) {
+        // Theme switching still works when browser storage is unavailable.
+      }
+
+      setTheme(savedTheme);
+      themeButton.hidden = false;
+
+      themeButton.addEventListener("click", () => {
+        const nextTheme =
+          root.dataset.theme === "light" ? "dark" : "light";
+
+        setTheme(nextTheme);
+
+        try {
+          localStorage.setItem("portfolio-theme", nextTheme);
+        } catch (_) {
+          // Persistence is optional.
+        }
+      });
+
+      function closeMenu() {
+        navigation.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "Menu";
+      }
+
+      menuButton.addEventListener("click", () => {
+        const open = menuButton.getAttribute("aria-expanded") !== "true";
+
+        navigation.classList.toggle("is-open", open);
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.textContent = open ? "Close" : "Menu";
+      });
+
+      navigation.addEventListener("click", event => {
+        if (event.target.closest("a")) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener("keydown", event => {
+        if (
+          event.key === "Escape" &&
+          menuButton.getAttribute("aria-expanded") === "true"
+        ) {
+          closeMenu();
+          menuButton.focus();
+        }
+      });
+
+      window.matchMedia("(min-width: 801px)").addEventListener(
+        "change",
+        closeMenu
+      );
+    })();
+  </script>
 </body>
 </html>
